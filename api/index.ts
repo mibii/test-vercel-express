@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const fs = require('fs').promises;
 const path = require('path');
+const cors = require('cors'); // Import the cors module
 
 const CITIES_FILE_PATH = path.join(__dirname, 'cities.json');
 const SERVICES_FILE_PATH = path.join(__dirname, 'services.json');
+
+app.use(express.json());
+app.use(cors()); // Use the cors middleware to enable CORS
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
